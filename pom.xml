@@ -17,13 +17,6 @@
 		<java.version>19</java.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>apache</id>
-			<url>https://mvnrepository.com/artifact/org.apache.mahout/mahout-core</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,30 +67,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.mahout/mahout-core -->
-
-		<!-- https://mvnrepository.com/artifact/org.apache.mahout/mahout-core -->
-
-		<!-- https://mvnrepository.com/artifact/org.apache.mahout/mahout-mr -->
-		<dependency>
-			<groupId>org.apache.mahout</groupId>
-			<artifactId>mahout-mr</artifactId>
-			<version>0.13.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- Jython -->
-		<dependency>
-			<groupId>org.python</groupId>
-			<artifactId>jython-standalone</artifactId>
-			<version>2.7.2</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>

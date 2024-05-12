@@ -37,13 +37,13 @@ public class TestController {
 
     @GetMapping("/org")
     @PreAuthorize("hasRole('ORGANIZER')")
-    public String moderatorAccess() {
+    public String organizerAccess() {
         return "Organizer Board.";
     }
 
     @GetMapping("/owner")
     @PreAuthorize("hasRole('OWNER')")
-    public String adminAccess() {
+    public String ownerAccess() {
         return "Owner Board.";
     }
 

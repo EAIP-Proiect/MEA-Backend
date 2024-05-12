@@ -93,4 +93,9 @@ public class AuthController {
     public Profile getProfile(@PathVariable("email") String email) {
         return profileService.getProfileByEmail(email).get();
     }
+
+    @GetMapping("/profile/{id}")
+    public Profile getProfile(@PathVariable("id") UUID id) {
+        return profileService.getProfileByUserId(id).get();
+    }
 }

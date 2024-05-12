@@ -15,9 +15,6 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
 
     private final UUID id;
-    private String firstName;
-
-    private String lastName;
     private String email;
     @JsonIgnore
     private final String password;
@@ -75,25 +72,8 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public void setEmail(String email) {

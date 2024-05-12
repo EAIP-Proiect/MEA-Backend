@@ -5,6 +5,7 @@ import com.mediaeventsagency.repository.ProfileRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProfileService {
@@ -25,5 +26,9 @@ public class ProfileService {
 
     public Optional<Profile> getProfileByEmail(String email) {
         return profileRepository.getByEmail(email);
+    }
+
+    public Optional<Profile> getProfileByUserId(UUID id) {
+        return profileRepository.findByUserId(id);
     }
 }
