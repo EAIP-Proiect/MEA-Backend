@@ -79,13 +79,16 @@ public class AuthController {
 
         String hashedPassword = passwordEncoder.encode(signUpRequest.getPassword());
         Set<Role> roles = new HashSet<>();
-        Optional<Role> userRole = roleRepository.findByName(ERole.ROLE_USER);
+        ERole role = signUpRequest.getRole().equals("user") ? ERole.ROLE_USER : signUpRequest.getRole().equals("owner") ? ERole.ROLE_OWNER : ERole.ROLE_ORGANIZER;
+        System.out.println(role);
+        System.out.println(signUpRequest.getRole());
+        Optional<Role> userRole = roleRepository.findByName(role);
         if (userRole.isEmpty()) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("role not found");
         }
         roles.add(userRole.get());
         userService.saveUserSignUp(signUpRequest.getEmail(), roles, hashedPassword);
-        profileService.saveProfileSignUp(signUpRequest.getFirstName(), signUpRequest.getLastName(), "");
+        profileService.saveProfileSignUp(signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getProfilePicture());
         return ResponseEntity.ok("User registered success");
     }
 

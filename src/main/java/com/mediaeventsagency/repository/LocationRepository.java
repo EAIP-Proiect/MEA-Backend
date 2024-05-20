@@ -10,9 +10,9 @@ import java.util.UUID;
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location, UUID> {
-    @Query("select l from Location l where l.user_id=:userId")
+    @Query("select l from Location l where l.owner.id=:userId")
     List<Location> findByUserId(UUID userId);
 
-    @Query("select l from Location l where l.user.email=:email")
+    @Query("select l from Location l where l.owner.email=:email")
     List<Location> findByEmail(String email);
 }

@@ -12,6 +12,4 @@ public class MediaEventsAgencyApplication {
 		SpringApplication.run(MediaEventsAgencyApplication.class, args);
 	}
 
-
-
 }
