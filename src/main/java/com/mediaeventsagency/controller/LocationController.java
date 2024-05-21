@@ -13,6 +13,16 @@ import java.util.UUID;
 public class LocationController {
 
     private LocationService locationService;
+    private final LocationRepository locationRepository;
+
+    public LocationController(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
+    }
+
+    @GetMapping("/{id}")
+    public void getLocation(@PathVariable("id") UUID id) {
+        locationRepository.findById(id);
+    }
 
     @GetMapping("/all")
     List<Location> getAllLocations() {
