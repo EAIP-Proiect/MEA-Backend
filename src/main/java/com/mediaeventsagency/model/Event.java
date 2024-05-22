@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import javax.print.attribute.standard.Media;
+import java.sql.Date;
 import java.sql.Types;
 import java.util.*;
 
@@ -34,5 +35,8 @@ public class Event {
 
     @Column
     private int nrOfTickets;
+
+    @Column
+    private Date date;
 }
 
