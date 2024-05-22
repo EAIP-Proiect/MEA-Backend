@@ -24,6 +24,9 @@ public class Event {
     private UUID id;
 
     @Column
+    private String title;
+
+    @Column
     private String text;
 
     @ManyToOne

@@ -23,6 +23,9 @@ public class Location {
     private UUID id;
 
     @Column
+    private String title;
+
+    @Column
     private String text;
 
     @ManyToOne
