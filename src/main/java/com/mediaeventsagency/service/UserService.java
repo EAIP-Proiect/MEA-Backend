@@ -3,6 +3,7 @@ package com.mediaeventsagency.service;
 import com.mediaeventsagency.model.Role;
 import com.mediaeventsagency.model.User;
 import com.mediaeventsagency.repository.UserRepository;
+import com.mediaeventsagency.util.JwtUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,9 +13,11 @@ import java.util.Set;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final JwtUtil jwtUtil;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
+        this.jwtUtil = jwtUtil;
     }
 
     public boolean existsByEmail(String email) {
@@ -25,8 +28,9 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public Role getRoleByEmail(String email) {
-        return userRepository.getRoleByEmail(email).get(0);
+    public Role getRoleByToken(String token) {
+        String username = jwtUtil.getUserNameFromJwtToken(token);
+        return userRepository.getRoleByEmail(username).get(0);
     }
 
     public User saveUserSignUp(String email, Set<Role> roles, String password) {

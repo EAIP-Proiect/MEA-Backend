@@ -102,8 +102,8 @@ public class AuthController {
         return profileService.getProfileByUserId(id).get();
     }
 
-    @GetMapping("/role/{email}")
-    public Role getRoleByEmail(@PathVariable("email") String email) {
-        return userService.getRoleByEmail(email);
+    @GetMapping("/role/{token}")
+    public Role getRoleByEmail(@PathVariable("token") String token) {
+        return userService.getRoleByToken(token);
     }
 }
