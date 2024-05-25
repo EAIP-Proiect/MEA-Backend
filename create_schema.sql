@@ -269,3 +269,20 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-05-20 22:40:26
+
+INSERT INTO locations (id, title, text, user_id)
+VALUES
+  ('c9cd2589-bdd2-455e-91af-ba09e4fd0d16', 'Location A', 'A vibrant venue located in the heart of the city, perfect for hosting concerts and music events.', 'd663591b-b61f-4300-9ac5-ead699b2e2a7'),
+  ('5b0d1f82-8c5b-49a5-bab0-e11aacc42c31', 'Location B', 'A cozy space nestled in the suburbs, offering an intimate setting for live performances and music gatherings.', 'd663591b-b61f-4300-9ac5-ead699b2e2a7'),
+  ('28cdf100-7aeb-4408-81e9-7b51823456a4', 'Location C', 'A spacious hall with excellent acoustics, ideal for hosting large-scale concerts and music festivals.', 'd663591b-b61f-4300-9ac5-ead699b2e2a7'),
+  ('fd28fa32-63c3-40e6-afe4-662db435bd98', 'Location D', 'An outdoor amphitheater surrounded by nature, providing a picturesque backdrop for outdoor music events and performances.', 'd663591b-b61f-4300-9ac5-ead699b2e2a7'),
+  ('a37c03cf-2927-41ce-bb02-bc664a70e313', 'Location E', 'A historic venue with vintage charm, known for its rich musical heritage and iconic performances.', 'd663591b-b61f-4300-9ac5-ead699b2e2a7');
+
+INSERT INTO events (id, title, location_id, text, media, date, nr_of_tickets)
+VALUES
+  ('2a7a9dfb-a4ff-4ad1-870a-7ccbe1a63024', 'Event A', 'c9cd2589-bdd2-455e-91af-ba09e4fd0d16', 'This event is cool.', '/images/music_event_1.jpg', '2024-06-01', 1000),
+  ('66dd62aa-63e1-4d81-be2d-0c44c17ade22', 'Event B', '5b0d1f82-8c5b-49a5-bab0-e11aacc42c31', 'This event is even cooler.', '/images/music_event_2.jpg', '2024-06-02', 1000),
+  ('5be249cd-b48d-4a8f-ad65-321f15d49081', 'Event C', '28cdf100-7aeb-4408-81e9-7b51823456a4', 'This event is even even cooler.', '/images/music_event_3.jpg', '2024-06-03', 1000),
+  ('175834a9-bdb3-4d51-a659-fa5f7a35480c', 'Event D', 'fd28fa32-63c3-40e6-afe4-662db435bd98', 'This event is even even even cooler.', '/images/music_event_4.jpg', '2024-06-04', 1000),
+  ('4a574fcc-9b17-4387-9024-fa0261458a63', 'Event E', 'a37c03cf-2927-41ce-bb02-bc664a70e313', 'This event is the coolest.', '/images/music_event_5.jpg', '2024-06-05', 1000);
+
