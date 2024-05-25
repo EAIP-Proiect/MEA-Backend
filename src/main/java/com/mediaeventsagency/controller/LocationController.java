@@ -1,12 +1,22 @@
 package com.mediaeventsagency.controller;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.mediaeventsagency.model.Location;
 import com.mediaeventsagency.repository.LocationRepository;
 import com.mediaeventsagency.service.LocationService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/location")
@@ -19,10 +29,19 @@ public class LocationController {
         this.locationRepository = locationRepository;
     }
 
+    // @GetMapping("/{id}")
+    // public void getLocation(@PathVariable("id") UUID id) {
+    //     locationRepository.findById(id);
+    // }
     @GetMapping("/{id}")
-    public void getLocation(@PathVariable("id") UUID id) {
-        locationRepository.findById(id);
-    }
+    public ResponseEntity<Location> getLocation(@PathVariable("id") UUID id) {
+        Optional<Location> location = locationRepository.findById(id);
+        if (location.isPresent()) {
+            return new ResponseEntity<>(location.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+}
 
     @GetMapping("/all")
     List<Location> getAllLocations() {
