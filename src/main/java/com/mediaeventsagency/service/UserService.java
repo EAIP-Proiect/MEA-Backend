@@ -25,6 +25,10 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public Role getRoleByEmail(String email) {
+        return userRepository.getRoleByEmail(email).get(0);
+    }
+
     public User saveUserSignUp(String email, Set<Role> roles, String password) {
         User user = new User();
         user.setEmail(email);
