@@ -12,7 +12,6 @@ public class LocationService {
 
     private final LocationRepository locationRepository;
 
-
     public LocationService(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
@@ -25,5 +24,11 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    public void deleteLocation(UUID id) {locationRepository.deleteById(id);}
+    public void deleteLocation(UUID id) {
+        locationRepository.deleteById(id);
+    }
+
+    public Location updateLocation(Location location) {
+        return locationRepository.save(location);
+    }
 }

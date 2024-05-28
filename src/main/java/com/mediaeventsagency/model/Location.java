@@ -2,12 +2,11 @@ package com.mediaeventsagency.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.JdbcTypeCode;
 
-import javax.print.attribute.standard.Media;
 import java.sql.Types;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "locations")
@@ -27,6 +26,15 @@ public class Location {
 
     @Column
     private String text;
+
+    @Column
+    private String address;
+
+    @Column
+    private Boolean wifi;
+
+    @Column
+    private String size;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

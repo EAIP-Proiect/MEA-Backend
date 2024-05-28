@@ -54,10 +54,11 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(authEntryPointJwt).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
+                .authorizeHttpRequests()
+                .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/test/**").permitAll()
-                .requestMatchers("/api/event/**").permitAll()
-                .requestMatchers("/api/location/**").permitAll()
+                //.requestMatchers("/api/event/**").permitAll()
+                //.requestMatchers("/api/location/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

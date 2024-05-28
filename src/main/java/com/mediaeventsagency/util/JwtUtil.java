@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.Map;
 
 @Component
 @Log4j2
@@ -20,8 +21,12 @@ public class JwtUtil {
 
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-        return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret)
+        return Jwts.builder()
+                .setSubject((userPrincipal.getUsername()))
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .addClaims(Map.of("uuid", userPrincipal.getId()))
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
 
